@@ -432,12 +432,21 @@ export class TextReference implements ComponentFramework.StandardControl<IInputs
 
 	//LOCAL DATA -----------------------------------------------------------------------------------------------------------------------------------------
 	private GetEntityDefinition(entityLogicalName: string): EntityDefinition | undefined {
+		
 		let entityDefinition: EntityDefinition | undefined;
+
 		if (this._entityDefinitionExclamation && this._entityDefinitionExclamation.length > 0) {
 			entityDefinition = this._entityDefinitionExclamation.find(f => f.LogicalName == entityLogicalName);
 			if (entityDefinition)
 				return entityDefinition;
 		}
+
+		if (this._entityDefinitionAt && this._entityDefinitionAt.length > 0) {
+			entityDefinition = this._entityDefinitionAt.find(f => f.LogicalName == entityLogicalName);
+			if (entityDefinition)
+				return entityDefinition;
+		}
+
 		if (this._entityDefinitionHashtag && this._entityDefinitionHashtag.length > 0) {
 			entityDefinition = this._entityDefinitionHashtag.find(f => f.LogicalName == entityLogicalName);
 			if (entityDefinition)

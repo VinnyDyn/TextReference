@@ -21,6 +21,7 @@ The [managed](https://github.com/VinnyDyn/StatusReasonKanban/releases/download/2
 - Logic based on Web API call ExecuteQuickFind and QuickFind view.
 - Click to open record's form.
 - Respect the attribute's disable state.
+- ! At least 3 characters are required and press ENTER to execute the query !
 
 ### Roadmap
 - Show caracters number.

@@ -16,6 +16,7 @@ export class TextReference implements ComponentFramework.StandardControl<IInputs
 	private _currentInput: HTMLInputElement | undefined;
 	private _records: HTMLUListElement;
 	private _position: Range | undefined;
+	private _mentions: Record[];
 
 	private _entityDefinitionExclamation: EntityDefinition[];
 	private _entityDefinitionAt: EntityDefinition[];
@@ -474,6 +475,23 @@ export class TextReference implements ComponentFramework.StandardControl<IInputs
 	public Persist() {
 		this._notifyOutputChanged();
 	}
+	public GetReferences() : string
+	{
+		var references : Record[];
+		references = new Array<Record>();
+		var records = document.getElementsByClassName("entity-record");
+		for (let index = 0; index < records.length; index++) {
+			const record_ = records[index];
+
+			var record = new Record();
+			record.LogicalName = record_.getAttribute("logicalName")!;
+			record.Id = record_.id;
+			
+			references.push(record);
+		}
+
+		return JSON.stringify(references);
+	}
 
 	/**
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
@@ -488,7 +506,10 @@ export class TextReference implements ComponentFramework.StandardControl<IInputs
 	 * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
 	 */
 	public getOutputs(): IOutputs {
-		return { text: this._container.innerHTML };
+		return { 
+			text: this._container.innerHTML,
+			records:  this.GetReferences()
+		};
 	}
 
 	/** 

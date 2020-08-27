@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
   <control namespace="VinnyBComponents" constructor="TextReference" version="0.0.1" display-name-key="TextReference" description-key="TextReference description" control-type="standard">
-    <property name="text" display-name-key="Property_Display_Key" description-key="" of-type="Multiple" usage="bound" required="true" />
+    <property name="text" display-name-key="Text Reference" description-key="" of-type="Multiple" usage="bound" required="true" />
+
+    <property name="records" display-name-key="JSON" description-key="" of-type="Multiple" usage="bound" required="true" />
     
     <property name="exclamation" display-name-key="!" description-key="" of-type="SingleLine.Text" usage="input" required="true" />
     <property name="exclamation_color" display-name-key="! Hexadecimal" description-key="" of-type="SingleLine.Text" usage="input" required="true" />
